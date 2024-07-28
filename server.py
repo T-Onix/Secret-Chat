@@ -38,7 +38,7 @@ try:
     Server.listen(1)
 
 except Exception:
-    print("Write number by int...")
+    print(Fore.RED + "Write number by int !" + Fore.RESET)
     sys.exit()
 
 
