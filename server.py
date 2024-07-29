@@ -32,8 +32,12 @@ try:
 
 except KeyboardInterrupt:
     exit(f"\n{Fore.RED}[-]{Fore.BLUE} User Exited :)")
-except ConnectionRefusedError:
-    exit(Fore.BLUE + "\nWrong IP or Port !" + Fore.RESET)
+except OSError:
+    exit(Fore.BLUE + "\nWrong IP or connection error !".title() + Fore.RESET)
+except ValueError:
+    exit(Fore.BLUE + "\nenter some value !".title() + Fore.RESET)
+
+
 try:
     Server.listen(1)
 

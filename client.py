@@ -35,7 +35,9 @@ except KeyboardInterrupt:
     exit(f"\n{Fore.RED}[-]{Fore.BLUE} User Exited :)")
 except ConnectionRefusedError:
     exit(Fore.BLUE + "\nWrong IP or Port !" + Fore.RESET)
-
+except ValueError:
+    exit(Fore.BLUE + "\nenter some value !".title() + Fore.RESET)
+    
 #=====================================================================
 if os.name == "nt":
     os.system("cls")
