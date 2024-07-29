@@ -31,12 +31,13 @@ try:
     Server.bind((ip , port))
 
 except KeyboardInterrupt:
-    exit(f"\n{Fore.RED}[-]{Fore.BLUE} User Exited :)")
+    exit(f"\n{Fore.RED}[-]{Fore.BLUE} User Exited :)" + Fore.RESET)
 except OSError:
-    exit(Fore.BLUE + "\nWrong IP or connection error !".title() + Fore.RESET)
+    exit(f"\n{Fore.RED}[-]{Fore.BLUE} Wrong IP or Connection Error !" + Fore.RESET)
 except ValueError:
-    exit(Fore.BLUE + "\nenter some value !".title() + Fore.RESET)
+    exit(f"\n{Fore.RED}[-]{Fore.BLUE} Enter Some Value !" + Fore.RESET)
 
+#=====================================================================
 
 try:
     Server.listen(1)
