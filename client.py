@@ -5,11 +5,12 @@ import os
 import platform
 import time
 #=====================================================================
-
-if os.name == "nt":
-    os.system("cls")
-else:
-    os.system("clear")
+def clear():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+clear()
 #=====================================================================
 
 print(Fore.GREEN + """
@@ -36,13 +37,9 @@ except KeyboardInterrupt:
 except ConnectionRefusedError:
     exit(Fore.BLUE + "\nWrong IP or Port !" + Fore.RESET)
 except ValueError:
-    exit(Fore.BLUE + "\nenter some value !".title() + Fore.RESET)
-    
+    exit(Fore.BLUE + "\nenter some value !".title() + Fore.RESET)           
 #=====================================================================
-if os.name == "nt":
-    os.system("cls")
-else:
-    os.system("clear")
+clear()
 #=====================================================================
 print(Fore.MAGENTA + """
  ██████╗██╗  ██╗ █████╗ ████████╗██████╗  ██████╗  ██████╗ ███╗   ███╗
@@ -59,10 +56,11 @@ connection.send(f"\n{Fore.YELLOW}{Name}{Fore.RESET} System is {Fore.BLUE}:{Fore.
 time.sleep(0.5)
 connection.send(f"\nAnd Node is {Fore.BLUE}:{Fore.RESET} {platform.uname()[1]}".encode())
 
-
 print(Fore.RED + "\n!end for end the chat \n".title() + Fore.RESET)
 
-print(Fore.LIGHTWHITE_EX + "Wait for server Answer...\n".title())
+print(f"{Fore.YELLOW}[+] {Fore.LIGHTWHITE_EX}Wait For Server Answer...\n" + Fore.RESET)
+
+print(Fore.GREEN + "======================================\n" + Fore.RESET)
 #=====================================================================
 try:
     while True:
@@ -74,6 +72,7 @@ try:
         connection.send(f"\n{Fore.YELLOW}{Name}{Fore.RESET}{Fore.LIGHTWHITE_EX} Sended {Fore.BLUE}:{Fore.RESET} {message}".encode())
 
         if message == "!end" or message == "!End":
+            connection.close()
             sys.exit()
         elif message == "\n":
             pass

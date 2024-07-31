@@ -3,11 +3,12 @@ from colorama import Fore , init ; init()
 import sys
 import os
 #=====================================================================
-
-if os.name == "nt":
-    os.system("cls")
-else:
-    os.system("clear")
+def clear():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+clear()
 #=====================================================================
 
 print(Fore.RED + """
@@ -47,19 +48,16 @@ except Exception:
     sys.exit()
 
 
+print(f"\n{Fore.YELLOW}[+]{Fore.LIGHTWHITE_EX} Wating For Client ..." + Fore.RESET)
+
+#=====================================================================
 try:
-    print(Fore.LIGHTWHITE_EX + "\nWating for client...".title() + Fore.RESET)
+    client , addr = Server.accept()
 except KeyboardInterrupt:
-    exit(f"\n{Fore.RED}[-]{Fore.BLUE} User Exited :)")
+                exit(f"\n{Fore.RED}[-]{Fore.BLUE} User Exited :)")
 
 #=====================================================================
-client , addr = Server.accept()
-
-#=====================================================================
-if os.name == "nt":
-    os.system("cls")
-else:
-    os.system("clear")
+clear()
 #=====================================================================
 print(Fore.MAGENTA + """
  ██████╗██╗  ██╗ █████╗ ████████╗██████╗  ██████╗  ██████╗ ███╗   ███╗
@@ -81,7 +79,10 @@ node = client.recv(1024).decode()
 print(system)
 print(node)
 
-print(Fore.RED + "\n!end for end the chat".title() + Fore.RESET)
+print(Fore.RED + "\n!end for end the chat\n".title() + Fore.RESET)
+
+print(Fore.GREEN + "=================================" + Fore.RESET)
+
 #=====================================================================
 try :
     while True:
@@ -89,6 +90,7 @@ try :
         client.send(f"{Message}".encode())
 
         if Message == "!end" or Message == "!End":
+            Server.close()
             sys.exit()
         elif Message == "\n":
             pass
